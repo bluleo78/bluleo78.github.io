@@ -1,5 +1,7 @@
 ---
 title: JavaScript 코딩
+categories: 
+  - Programming Language
 ---
 
 Array/Object Destructuring

@@ -1,5 +1,7 @@
 ---
 title: React - Storybook 연동
+categories: 
+  - React
 ---
 
 

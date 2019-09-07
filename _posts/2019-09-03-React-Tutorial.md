@@ -1,5 +1,7 @@
 ---
 title: React 튜토리얼 분석
+categories: 
+  - React
 ---
 
 

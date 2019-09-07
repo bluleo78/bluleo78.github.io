@@ -1,5 +1,7 @@
 ---
 title: React 프로젝트 구성
+categories: 
+  - React
 ---
 
 프로젝트 생성

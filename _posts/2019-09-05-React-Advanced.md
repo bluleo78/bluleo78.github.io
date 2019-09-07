@@ -1,5 +1,7 @@
 ---
 title: React 고급 가이드
+categories: 
+  - React
 ---
 
 

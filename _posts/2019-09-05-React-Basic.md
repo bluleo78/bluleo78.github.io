@@ -1,5 +1,7 @@
 ---
 title: React 기본 가이드
+categories: 
+  - React
 ---
 
 
