@@ -1,5 +1,4 @@
 ---
-layout: post
 title: React 튜토리얼 분석
 ---
 

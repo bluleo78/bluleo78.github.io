@@ -1,5 +1,4 @@
 ---
-layout: post
 title: React - Storybook 연동
 ---
 

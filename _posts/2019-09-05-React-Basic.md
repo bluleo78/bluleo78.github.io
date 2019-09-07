@@ -1,5 +1,4 @@
 ---
-layout: post
 title: React 기본 가이드
 ---
 

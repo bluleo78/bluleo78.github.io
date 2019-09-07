@@ -1,5 +1,4 @@
 ---
-layout: post
 title: JavaScript 코딩
 ---
 

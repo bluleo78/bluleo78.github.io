@@ -1,5 +1,4 @@
 ---
-layout: post
 title: React 라우터 구성
 ---
 

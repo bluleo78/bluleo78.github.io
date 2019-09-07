@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 루비 고급
 ---
 

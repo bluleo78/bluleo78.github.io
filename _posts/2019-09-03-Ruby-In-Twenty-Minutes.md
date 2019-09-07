@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 루비 20분 가이드 요약
 ---
 
