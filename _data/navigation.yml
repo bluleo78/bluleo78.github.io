@@ -11,7 +11,7 @@ main:
   # - title: "Sitemap"
   #   url: /sitemap
 docs:
-  - title: Web Technology
+  - title: "Web Technology"
     children:
       - title: "React"
         url: /categories/#react
