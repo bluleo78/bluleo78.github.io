@@ -1,7 +1,7 @@
 ---
 title: 루비 고급
 categories: 
-  - Programming Language
+  - ruby
 ---
 
 

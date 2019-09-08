@@ -301,7 +301,8 @@ defaults:
     values:
       layout: single
       author_profile: true
-      nav: "docs"
+      sidebar:
+        nav: "docs"
   # _docs
   - scope:
       path: ""

@@ -6,12 +6,14 @@ main:
     url: "/about/" # 클릭시 이동할 URL
   - title: "Category"
     url: /categories/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap
 docs:
   - title: "Web Technology"
     children:
       - title: "React"
         url: /categories/#react
+  - title: "Programming Language"
+    children:
+      - title: "JavaScript"
+        url: /categories/#javascript
+      - title: "Ruby"
+        url: /categories/#ruby

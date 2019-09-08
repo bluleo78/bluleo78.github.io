@@ -1,7 +1,7 @@
 ---
 title: 루비 20분 가이드 요약
 categories: 
-  - Programming Language
+  - ruby
 ---
 
 루비쉘(irb, interactive ruby shell)
