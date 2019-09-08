@@ -14,4 +14,4 @@ docs:
   - title: Web Technology
     children:
       - title: "React"
-        url: /react/
+        url: /categories/#react
