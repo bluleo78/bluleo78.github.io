@@ -1,7 +1,6 @@
 ---
+layout: post
 title: React 라우터 구성
-categories: 
-  - React
 ---
 
 기본 구성
@@ -27,6 +26,7 @@ function App() {
 * URL 경로와 매치되는 경우 지정된 컴포넌트를 렌더링하는 방식이다
 * 'exact' 는 해당 경로가 정확히 매치되야 라우팅된다.
 * 경로는 배열로도 기술할 수 있다
+
 
 중첩(Nested) 라우팅
 ---
@@ -68,18 +68,38 @@ import { Link } from 'react-router-dom'
 <Redirect> 태그가 렌더링되는 경우 경로가 바뀐다.
 ```
 import { Redirect } from 'react-router-dom'
+
+class Home extends React.Component {
 ...
+  render() {
+    if (this.state.redirect) {
+      return <Redirect to="/About"/>
+    }
 
-render() {
-  if (this.state.redirect) {
-    return <Redirect to="/About"/>
+    return (
+      <button onClick={() => this.setState({redirect:true})}>Redirect</button>
+    );
   }
-
-  return (
-    <button onClick={() => this.setState({redirect:true})}>Redirect</button>
-  );
 }
 ```
+
+다른 방법은 withRouter 고차원 컴포넌트(High Order Component)를 사용한다.
+이것을 사용하면 props 에 history 가 자동으로 포함된다
+```
+import { withRouter } from 'react-router-dom'
+
+class Home extends React.Component {
+...
+  render() {
+    return (
+      <button onClick={() => this.props.history.push('/About')}>Redirect</button>
+    );
+  }
+}
+
+export default withRouter(Home)
+```
+
 
 RegExp 경로 기술
 ---
