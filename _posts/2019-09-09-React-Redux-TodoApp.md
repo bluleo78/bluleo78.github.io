@@ -1,6 +1,7 @@
 ---
-layout: post
 title: React Redux TodoApp 따라하기
+categories: 
+  - React
 ---
 
 Redux 를 사용하여 할일을 관히하는 TodoApp 을 만드는 과정을 따라해본다.

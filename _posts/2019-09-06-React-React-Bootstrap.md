@@ -1,6 +1,7 @@
 ---
-layout: post
 title: React - React-Bootstrap 기본 가이드
+categories: 
+  - React
 ---
 
 설치

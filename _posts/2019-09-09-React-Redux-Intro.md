@@ -1,6 +1,7 @@
 ---
-layout: post
 title: React Redux 소개
+categories: 
+  - React
 ---
 
 React 의 상태 관리를 위해 도입된 Redux 에 대한 간단한 소개
