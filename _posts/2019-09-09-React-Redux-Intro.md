@@ -52,10 +52,29 @@ Redux 구성 요소
 ### 리듀서
 현재 상태와 액션을 받아서 새로운 상태를 만드는 함수
 
-
 ### 스토어
 리듀서를 이용하여 스토어를 생성
 스토어를 구독하여 상태 조회
+
+### Presentational/Container 컴포넌트
+Presentational 컴포넌트는 Redux 상태와 연결이 되어 있지 않은 순수한 React 컴포넌트
+Container 컴포넌트는 Redux 상태와 연결되어 있는 React 컴포넌트이며 주로 Presentational 컴포넌트를 감싸는 형식이다.
+
+### 디스패치
+생성한 액션을 'dispatch' 함수를 이용하여 리듀서에게 전달하는 과정
+
+
+Redux 개발 흐름
+---
+# 액션과 액션 생성자를 만들고
+# 상태를 설계하고
+# 액션/이전상태에 대해서 새로운 상태를 정의하는 리듀서를 만들고
+  * 이때 액션 그룹 별로 하위 리듀서를 만들고, 'combineReducers' 통합하는 방식을 대부분 사용
+# Container 컴포넌트 생성
+  * Redux 상태와 Props 관계를 정의(mapStateToProps)
+  * Redux 액션 디스패치 함수와 Props 관계를 정의(mapDispatchToProps)
+  * 'connect' 를 이용해서 Presentational 컴포넌트와 연결
+
 
 
 참고
