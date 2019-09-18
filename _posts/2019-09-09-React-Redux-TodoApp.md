@@ -22,9 +22,6 @@ index.js
 ---
 스토어를 생성하고 'Provider' 컴포넌트를 이용하여 전체 컴포넌트를 감싼다
 
-<details>
-  <summary>Click to expand!</summary>
-
 ```
 import React from 'react';
 import { createStore } from 'redux';
@@ -42,15 +39,11 @@ React.render(
   rootElement
 );
 ```
-</details>
 
 
 actions.js
 ---
 액션과 액션 생성자를 정의한다
-
-<details>
-  <summary>Click to expand!</summary>
 
 ```
 export const ADD_TODO = 'ADD_TODO';
@@ -75,17 +68,12 @@ export function setVisibilityFilter(filter) {
   return { type: SET_VISIBILITY_FILTER, filter };
 }
 ```
-</details>
-
 
 
 reducers.js
 ---
 리듀서 정의한다.
 각각의 하위 상태에 대한 리듀서를 만들고, combineReducers 로 조합해서 리턴
-
-<details>
-  <summary>Click to expand!</summary>
 
 ```
 import { combineReducers } from 'redux';
@@ -136,16 +124,12 @@ export default todoApp;
   * 배열 타입
   * 'ADD_TODO' 액션이면, 배열 뒤에 해당 액션으로부터 할일을 생성해서 추가
   * 'COMPLETE_TODO' 액션이면, 해당 액션의 인덱스를 찾아서 completed 값을 true 로 변경
-</details>
 
 
 App.js
 ---
 Redux 상태로부터 props 를 가져와서 하위 컴포넌트를 렌더링하고,
 하위 컴포넌트의 이벤트 콜백에서 액션을 생성하여 Redux 에 디스패치하는 형식이다.
-
-<details>
-  <summary>Click to expand!</summary>
 
 ```
 import React from 'react';
@@ -218,15 +202,11 @@ export default connect(select)(App);
 * ''connect' 에서 이를 'App' 컴포넌트와 연결
 * 이 과정을 통해서 'App' 컴포넌트는 'dispatch', 'visibleTodos', 'visibilityFilter' 를 props 전달받음
 * 위 props 를 이용하여 하위 컴포넌트를 렌더링
-</details>
 
 
 
 Todo.js
 ---
-<details>
-  <summary>Click to expand!</summary>
-
 ```
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -255,14 +235,10 @@ Todo.propTypes = {
 * 'li' 태그를 이용하여 리스트 목록을 구성하고 있고,
 * 'onClick' 이벤트 핸들러를 지원
 * 'completed', 'text' 받아서 할일을 꾸미고 있다
-</details>
 
 
 TodoList.js
 ---
-<details>
-  <summary>Click to expand!</summary>
-
 ```
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -294,7 +270,6 @@ TodoList.propTypes = {
 * 'ul' 태그를 이용하여 목록 구성
 * 'todos' props 를 받아 하위 Todo 컴포넌트을 렌더링
 * 'onTodoClick' props 를 하위 Todo 컴포넌트의 onClick 이벤트 콜백을 받아 호출
-</details>
 
 
 예제 코드에 대해서

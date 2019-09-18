@@ -18,9 +18,6 @@ index.js
 ---
 DOM 에 'Root' 컴포넌트 추가
 
-<details>
-  <summary>Click to expand!</summary>
-
 ```
 import 'babel-polyfill';
 import React from 'react';
@@ -29,15 +26,11 @@ import Root from './containers/Root';
 
 ReactDOM.render(<Root />, document.getElementById('root'));
 ```
-</details>
 
 
 Root.js
 ---
 스토어에 필요한 미들웨어를 설정하고, 앱(AysncApp)을 Provider 로 감싸서 렌더링한다.
-
-<details>
-  <summary>Click to expand!</summary>
 
 ```
 import React from 'react';
@@ -57,21 +50,11 @@ export default class Root extends React.Component {
   }
 }
 ```
-</details>
 
 
 actions.js
 ---
 액션과 액션 생성자를 정의한다.
-액션 생성자 
-* selectReddit: 레딧 주제 선택 액션 생성
-* invalidateReddit: 해당 레딧 주제에 포스트 무효화
-* requestPosts: 해당 레딧 주제에 대한 글 조회요청
-* receivePosts: 해당 레딧 주제에 대한 글 업데이트 요청
-* fetchPostsIfNeeded: 필요한 해당 레딧 주제에 글 조회 요청 액션(requestPosts)을 생성한 다음 사이트에서 데이터를 가져와 글 업데이트 액션(receivePosts)을 생성한다.
-
-<details>
-  <summary>Click to expand!</summary>
 
 ```
 import fetch from 'isomorphic-fetch';
@@ -139,16 +122,16 @@ export function fetchPostsIfNeeded(reddit) {
   };
 }
 ```
-</details>
-
+* selectReddit: 레딧 주제 선택 액션 생성
+* invalidateReddit: 해당 레딧 주제에 포스트 무효화
+* requestPosts: 해당 레딧 주제에 대한 글 조회요청
+* receivePosts: 해당 레딧 주제에 대한 글 업데이트 요청
+* fetchPostsIfNeeded: 필요한 해당 레딧 주제에 글 조회 요청 액션(requestPosts)을 생성한 다음 사이트에서 데이터를 가져와 글 업데이트 액션(receivePosts)을 생성한다.
 
 
 reducers.js
 ---
 리듀서 정의한다. 각각의 하위 상태에 대한 리듀서를 만들고, combineReducers 로 조합해서 리턴한다.
-
-<details>
-  <summary>Click to expand!</summary>
 
 ```
 import { combineReducers } from 'redux';
@@ -219,16 +202,12 @@ export default rootReducer;
   * 'RECEIVE_POSTS' 액션: 'isFetching' 을 거짓으로 만들어 가져온 데이터를 화면에 그릴 수 있게
 * 'selectedReddit' 상태
   * 'SELECT_REDDIT' 액션: 선택한 주제로 변경할 수 있게
-</details>
 
 
 AsyncApp.js
 ---
 Redux 상태로부터 props 를 가져와서 하위 컴포넌트를 렌더링하고,
 하위 컴포넌트의 이벤트 콜백에서 액션을 생성하여 Redux 에 디스패치하는 형식이다.
-
-<details>
-  <summary>Click to expand!</summary>
 
 ```
 import { connect } from 'react-redux';
@@ -284,15 +263,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(AsyncApp);
   * onChangeSelectedReddit: 레딧 주제 변경 알림
   * onClickRefresh: Refresh 를 클릭했을 때, 레딧 포스트를 무효화하고 현재 주제에 대한 글 목록을 가져옴
 * 이를 'connect' 에서 이를 'AsyncApp' Presentational 컴포넌트와 연결
-</details>
 
 
 AsyncApp.js
 ---
 앱 Presetational 컴포넌트
-
-<details>
-  <summary>Click to expand!</summary>
 
 ```
 import React from 'react';
@@ -377,15 +352,11 @@ export default AsyncApp;
   * 데이터 가 없을 때 'Empty.' 문구
   * 글 목록, 패치 중엔 경우는 반투명하게 (opacity: 0.5)
 * props 타입 체크
-</details>
-
 
 
 Picker.js
 ---
 레딧 주제 선택을 위한 콤보 박스 제공
-<details>
-  <summary>Click to expand!</summary>
 
 ```
 import React from 'react';
@@ -420,14 +391,11 @@ Picker.propTypes = {
 };
 ```
 * 'select', 'option' 태그 사용
-</details>
 
 
 Posts.js
 ---
 레딧 글 목록 표시
-<details>
-  <summary>Click to expand!</summary>
 
 ```
 import React from 'react';
@@ -450,9 +418,6 @@ Posts.propTypes = {
 };
 ```
 * 'ul' 태그를 이용하여 목록 구성
-</details>
-
-
 
 
 참고
