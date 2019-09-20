@@ -86,7 +86,100 @@ export const App = () => {
 ```
 * 위에서는 state.todos 가 변경되지 않은 경우에 완료된 todo 아이템의 개수를 다시 계산하지 않고 이전 계산값을 리턴
 
+'reselect' 메모이제이션 기능은 하나의 컴포넌트에서는 잘 동작하지만, 두개 이상의 컴포넌트에서 같은 selector 함수를 사용하는 경우는 문제가 발생한다.
+이 경우 각각의 컴포넌트 마다 새로운 selector 를 생성하도록 설정해줘야 한다.
+```
+mport React, { useMemo } from 'react'
+import { useSelector } from 'react-redux'
+import { createSelector } from 'reselect'
 
+const makeNumOfTodosWithIsDoneSelector = () =>
+  createSelector(
+    state => state.todos,
+    (_, isDone) => isDone,
+    (todos, isDone) => todos.filter(todo => todo.isDone === isDone).length
+  )
+
+export const TodoCounterForIsDoneValue = ({ isDone }) => {
+  const selectNumOfTodosWithIsDone = useMemo(
+    makeNumOfTodosWithIsDoneSelector,
+    []
+  )
+
+  const numOfTodosWithIsDoneValue = useSelector(state =>
+    selectNumOfTodosWithIsDone(state, isDone)
+  )
+
+  return <div>{numOfTodosWithIsDoneValue}</div>
+}
+
+export const App = () => {
+  return (
+    <>
+      <span>Number of done todos:</span>
+      <TodoCounterForIsDoneValue isDone={true} />
+      <span>Number of unfinished todos:</span>
+      <TodoCounterForIsDoneValue isDone={false} />
+    </>
+  )
+}
+```
+* 위 예제에서는 'TodoCounterForIsDoneValue' 컴포넌트 두 개가 사용된다. 하나는 완료된 할일 목록, 다른 하나는 완료되지 않는 할일 목록
+* selector 함수를 useMemo 를 이용하여 생성시도하고 있다. 의존성의 [] 배열을 넘겨주었기에 컴포넌트 마운트될 때 한번 생성됨
+  * 즉 이 'isDone' props 가 바뀔일이 없다고 가정함.
+* useMemo 안에서는 'reselect' createSelector 함수를 이용하여 selector 함수를 생성하고 있다.
+* 참고로 useMemo 와 useCallback 은 같은 것임.
+
+
+
+'reselect' 에 대한 자세한 내용은 별도의 포스트 참고
+
+
+useDispatch
+---
+Redux 스토어의 'dispatch' 함수를 리턴
+```
+import React from 'react'
+import { useDispatch } from 'react-redux'
+
+export const CounterComponent = ({ value }) => {
+  const dispatch = useDispatch()
+
+  return (
+    <div>
+      <span>{value}</span>
+      <button onClick={() => dispatch({ type: 'increment-counter' })}>
+        Increment counter
+      </button>
+    </div>
+  )
+}
+```
+
+'useDispatch' 를 이벤트 핸들러에서 직접 사용하지 말고, 사용하때는 useMemo, useCallback 을 이용하는 것이 좋음.
+```
+import React, { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
+
+export const CounterComponent = ({ value }) => {
+  const dispatch = useDispatch()
+  const incrementCounter = useCallback(
+    () => dispatch({ type: 'increment-counter' }),
+    [dispatch]
+  )
+
+  return (
+    <div>
+      <span>{value}</span>
+      <MyIncrementButton onIncrement={incrementCounter} />
+    </div>
+  )
+}
+
+export const MyIncrementButton = React.memo(({ onIncrement }) => (
+  <button onClick={onIncrement}>Increment counter</button>
+))
+```
 
 
 참고
