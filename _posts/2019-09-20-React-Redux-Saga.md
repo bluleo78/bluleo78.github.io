@@ -71,6 +71,48 @@ const store = createStore(
 sagaMiddleware.run(mySaga)
 ```
 
+태스크 생성
+---
+
+### takeEvery
+지정된 액션에 대해서 항상 태스크를 실행
+```
+yield takeEvery('액션이름', 태스크);
+```
+
+### takeLatest
+항상 마지막 액션에 대해서만 태스크를 실행
+만약에 실행중인 태스크가 있으면, 취소해버림
+```
+yield takeLatest('액션이름', 태스크);
+```
+
+함수 호출
+---
+### call
+직접 함수를 호출하는 것이 아니라 어떤 함수를 호출하는지 상세를 리턴한다.
+실제 호출은 Redux Saga 가 알아서 호출함
+```
+yield call(함수, 아귀먼트...)
+yield call([객체, '메소드이름'], 아귀먼트...)
+```
+
+### apply
+'call' 과 거의 유사한데, 아귀먼트를 배열로 넘긴다.
+```
+yield apply(함수, [아귀먼트...])
+yield call([객체, '메소드이름'], [아귀먼트...])
+```
+
+액션 디스패치
+---
+### put
+액션을 디스패치하는 상세를 리턴한다.
+실제 디스패치는 Redux Saga 가 함.
+```
+yield put(액션)
+```
+
 Redux Saga vs Redux Thunk
 ---
 * 둘다 비동기 액션을 지원하는 것은 마찬가지
