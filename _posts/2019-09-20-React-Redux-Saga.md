@@ -87,6 +87,13 @@ yield takeEvery('액션이름', 태스크);
 yield takeLatest('액션이름', 태스크);
 ```
 
+### take
+다음에 나오는 해당 액션에 대해서 태스크 실행
+```
+yield take('액션이름', 태스크);
+```
+
+
 함수 호출
 ---
 ### call
@@ -104,6 +111,21 @@ yield apply(함수, [아귀먼트...])
 yield call([객체, '메소드이름'], [아귀먼트...])
 ```
 
+### fork
+함수 호출인데, Non-Block 호출임
+```
+const task = yield fork(함수, 아귀먼트...)
+```
+리턴받은 태스크를 이용하여 태스크 실행을 취소시킬 수 있음
+
+### cancel
+Non-Block 함수 호출 취소
+```
+const task = yield fork(함수, 아귀먼트...)
+yield cancel(task)
+```
+
+
 액션 디스패치
 ---
 ### put
@@ -111,6 +133,13 @@ yield call([객체, '메소드이름'], [아귀먼트...])
 실제 디스패치는 Redux Saga 가 함.
 ```
 yield put(액션)
+```
+
+병렬 작업 수행
+---
+### all
+```
+yield all([call, ...])
 ```
 
 Redux Saga vs Redux Thunk
