@@ -141,6 +141,10 @@ yield put(액션)
 ```
 yield all([call, ...])
 ```
+에러 핸들링
+---
+
+### try ~ catch
 
 Redux Saga vs Redux Thunk
 ---
